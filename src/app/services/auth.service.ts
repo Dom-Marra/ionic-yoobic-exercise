@@ -36,6 +36,13 @@ export class AuthService {
   }
 
   /**
+   * Logs out the user from the application
+   */
+  public logout(): void {
+    this.isLoggedIn = false;
+  }
+
+  /**
    * Returns if a user is currently logged in
    * 
    * @returns
