@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,16 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class MenuPage implements OnInit {
 
   public mainPages = [
-    { title: 'Dashboard', url: 'mission-list', icon: 'bar-chart' },
-    { title: 'Photos', url: '/main', icon: 'image' },
-    { title: 'Available Missions', url: '/main', icon: 'book' },
-    { title: 'My Missions', url: '/main', icon: 'book' },
-    { title: 'Chat', url: '/main', icon: 'chatbox' }
+    { title: 'Dashboard', url: '/menu/master-list', icon: 'bar-chart' },
+    { title: 'Photos', url: 'a', icon: 'image' },
+    { title: 'Available Missions', url: 'a', icon: 'book' },
+    { title: 'My Missions', url: 'a', icon: 'book' },
+    { title: 'Chat', url: 'a', icon: 'chatbox' }
   ];
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public signOut(): void {
+    this.authService.logout();
+    this.router.navigateByUrl('/sign-in');
   }
 
 }
