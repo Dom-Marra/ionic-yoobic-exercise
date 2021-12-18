@@ -1,9 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sign-in</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="page-wrapper" color="light">
+  <section class="sign-in-page">
+    <div class="circle"></div>
+  
+    <h1>Sign In</h1>
+    
+    <p *ngIf="isError" class="err">The login information is incorrect</p>
+  
+    <form [formGroup]="user" (ngSubmit)="login()">
+      <ion-item class="input-field" detail="false" lines="none">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-input placeholder="Email" type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p class="err field-err" 
+        *ngIf="this.user.controls['email'].errors?.required && !this.user.controls['email'].pristine">
+        This field is required
+      </p>
+    
+      <ion-item class="input-field" detail="false" lines="none">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input placeholder="Password" type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p class="err field-err" 
+        *ngIf="this.user.controls['password'].errors?.required && !this.user.controls['password'].pristine">
+        This field is required
+      </p>
+    
+      <a class="forgot-password" routerLink="/sign-in">forgot password?</a>
+    
+      <div class="fb-sign-in">
+        <p>Sign In With</p>
+        <ion-button color="transparent" shape="round"><ion-icon name="logo-facebook"></ion-icon></ion-button>
+      </div>
+    
+      <ion-item detail="false" lines="none" class="sign-in-btns" color="transparent">
+        <ion-button type="button" shape="round" fill="outline" size="default" color="dark">Sign Up</ion-button>
+        <ion-button type="submit" shape="round" size="default" color="dark">Sign In</ion-button>
+      </ion-item>
+    </form>
 
-<ion-content>
-
+    <a class="t-and-c" routerLink="/sign-in">Terms and conditions</a>
+  </section>
 </ion-content>
