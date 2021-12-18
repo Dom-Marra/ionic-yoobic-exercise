@@ -7,7 +7,7 @@ import { User } from '../models/user';
 export class AuthService {
 
   private readonly LOGIN_DETAILS: User = {        //Mock user details
-    username: 'YOOBIC',
+    email: 'YOOBIC@yoobic.com',
     password: 'yoobic'
   }
 
@@ -25,7 +25,7 @@ export class AuthService {
    */
   public login(user: User): Promise<any> {
     return new Promise((resolve, reject) => {
-      if (user === this.LOGIN_DETAILS) {
+      if (user.email === this.LOGIN_DETAILS.email && user.password === this.LOGIN_DETAILS.password) {
         this.isLoggedIn = true;
         resolve(true)
       } else {
