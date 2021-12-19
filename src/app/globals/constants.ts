@@ -1,0 +1,1 @@
+export const TMDB_IMG_URL: string = "https://image.tmdb.org/t/p/";
