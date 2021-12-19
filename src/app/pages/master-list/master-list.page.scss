@@ -1,0 +1,31 @@
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+}
+
+.master-list-wrapper {
+    padding: 0 1rem;
+
+    ion-card {
+        width: 100%;
+        max-width: 30rem;
+        margin: 1rem auto;
+    }
+
+    @media screen and (min-width: 74em) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+
+        ion-card { 
+            max-width: 100%;
+        }
+    }
+
+    @media screen and (min-width: 99em) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
