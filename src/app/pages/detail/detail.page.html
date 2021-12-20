@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="menu/master-list" slot="end"></ion-back-button>
+    </ion-buttons>
+    <ion-menu-button slot="end">
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </ion-menu-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="movie">
+  <div class="backdrop" [style.background-image]="'url(' + this.tmdbImgURL + '/original' + movie.backdrop_path + ')'"></div>
 
+  <div class="text-content-wrapper">
+    <div class="text-content ion-padding">
+      <ion-img class="ion-padding-bottom" [src]="this.tmdbImgURL + '/original' + movie.poster_path"></ion-img>
+  
+      <div class="heading ion-padding" [class.no-tagline]="!movie.tagline">
+        <p class="rating">{{(movie.vote_average * 10).toFixed(0)}}%</p>
+        <h1 class="title">{{ movie?.original_title }}</h1>
+        <p *ngIf="movie.tagline" class="tagline">{{ movie.tagline }}</p>  
+      </div>
+  
+      <section class="overview ion-padding">
+        <h2>Overview</h2>
+        <p class="ion-padding-top ion-padding-bottom">{{ movie.overview ? movie.overview : 'There is no overview for this movie.' }}</p>
+      </section>
+  
+      <ion-text color="medium" class="release">
+        <p class="ion-padding-start ion-paddin-end">{{movieRelease}}</p>
+      </ion-text>
+  
+      <section *ngIf="movie.genres?.length > 0" class="genres">
+        <ion-text class="ion-padding-start ion-paddin-end" *ngFor="let genre of movie.genres" color="medium">
+          <p>{{genre.name}}</p>
+        </ion-text>
+      </section>
+    </div>
+  </div>
 </ion-content>
