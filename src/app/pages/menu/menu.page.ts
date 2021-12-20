@@ -11,10 +11,10 @@ export class MenuPage implements OnInit {
 
   public mainPages = [
     { title: 'Dashboard', url: '/menu/master-list', icon: 'bar-chart' },
-    { title: 'Photos', url: 'a', icon: 'image' },
-    { title: 'Available Missions', url: 'a', icon: 'book' },
-    { title: 'My Missions', url: 'a', icon: 'book' },
-    { title: 'Chat', url: 'a', icon: 'chatbox' }
+    { title: 'Photos', url: '/', icon: 'image' },
+    { title: 'Available Missions', url: '/', icon: 'book' },
+    { title: 'My Missions', url: '/', icon: 'book' },
+    { title: 'Chat', url: '/', icon: 'chatbox' }
   ];
 
   constructor(private authService: AuthService, private router: Router) { }
