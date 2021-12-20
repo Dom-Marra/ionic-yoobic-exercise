@@ -24,14 +24,14 @@
   </ion-grid>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <div *ngIf="movies.length" class="master-list-wrapper">
     <ion-card
       *ngFor="let movie of movies"
       [routerLink]="movie.id"
       button="true"
     >
-      <ion-img [src]="this.tmdbImgURL + '/w500' + movie.poster_path"></ion-img>
+      <ion-img [src]="this.tmdbImgURL + '/w342' + movie.poster_path"></ion-img>
 
       <ion-card-header>
         <ion-grid>
@@ -52,5 +52,5 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <ion-title *ngIf="error" class="ion-margin-top">Whoops! It looks like there was an error. Please try refreshing the page.</ion-title>
+  <p *ngIf="error" class="ion-margin-top">Whoops! It looks like there was an error. Please try refreshing the page.</p>
 </ion-content>
