@@ -28,11 +28,11 @@
       </section>
   
       <ion-text color="medium" class="release">
-        <p class="ion-padding-start ion-paddin-end">{{movieRelease}}</p>
+        <p class="ion-padding-start ion-padding-end">{{movieRelease}}</p>
       </ion-text>
   
       <section *ngIf="movie.genres?.length > 0" class="genres">
-        <ion-text class="ion-padding-start ion-paddin-end" *ngFor="let genre of movie.genres" color="medium">
+        <ion-text class="ion-padding-start ion-padding-end" *ngFor="let genre of movie.genres" color="medium">
           <p>{{genre.name}}</p>
         </ion-text>
       </section>

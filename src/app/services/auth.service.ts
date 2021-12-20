@@ -11,7 +11,8 @@ export class AuthService {
     password: 'yoobic'
   }
 
-  private isLoggedIn: boolean = false;
+  //Mock JWT
+  private readonly AUTH_TOKEN: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IllPT0JJQ0B5b29iaWMuY29tIiwiZXhwIjozMjUwMzcwODgwMH0.U9-aN5c1QMw5HiqdwvRXYciHd68Awincm0OZtTG1zz4';
 
   constructor() { }
 
@@ -26,10 +27,9 @@ export class AuthService {
   public login(user: User): Promise<any> {
     return new Promise((resolve, reject) => {
       if (user.email === this.LOGIN_DETAILS.email && user.password === this.LOGIN_DETAILS.password) {
-        this.isLoggedIn = true;
+        localStorage.setItem('login_token', this.AUTH_TOKEN);
         resolve(true)
       } else {
-        this.isLoggedIn = false;
         reject("ERR: Invalid login details")
       }
     });
@@ -39,7 +39,7 @@ export class AuthService {
    * Logs out the user from the application
    */
   public logout(): void {
-    this.isLoggedIn = false;
+    localStorage.removeItem('login_token');
   }
 
   /**
@@ -49,6 +49,11 @@ export class AuthService {
    *       Boolean 
    */
   public getIsLoggedIn(): boolean {
-    return this.isLoggedIn;
+    const payload = localStorage.getItem('login_token')?.split('.')[1];
+
+    if (!payload) return false;
+
+    const parsedPayload = JSON.parse(atob(payload));
+    return parsedPayload.exp > Date.now() / 1000;
   }
 }

@@ -23,10 +23,13 @@ export class SignInPage implements OnInit {
   }
 
   /**
-   * Attempts to login the user provided the information in the login form
+   * Attempts to login the user provided the information in the login form.
+   * 
+   * Navigates the user to the menu route if successful and also clears the form.
    */
   public login(): void {
     this.authService.login(this.user.value).then(() => {
+      this.user.reset();
       this.router.navigateByUrl('/menu');
     }).catch(() => {
       this.isError = true;
