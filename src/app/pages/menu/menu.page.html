@@ -12,6 +12,7 @@
             detail="false" 
             routerLinkActive="selected"
             color="transparent"
+            [routerLinkActiveOptions]="{ exact: true }"
           >
             <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
             <ion-label>{{ page.title }}</ion-label>
