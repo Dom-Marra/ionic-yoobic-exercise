@@ -6,7 +6,7 @@
         <ion-list class="menu-list">
           <ion-item 
             *ngFor="let page of mainPages; let i = index"
-            routerDirection="root" 
+            routerDirection="forward" 
             [routerLink]="[page.url]" 
             lines="none" 
             detail="false" 

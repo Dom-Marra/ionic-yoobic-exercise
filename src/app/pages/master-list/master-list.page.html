@@ -30,6 +30,7 @@
       *ngFor="let movie of movies"
       [routerLink]="movie.id"
       button="true"
+      routerDirection="forward" 
     >
       <ion-img [src]="this.tmdbImgURL + '/w342' + movie.poster_path"></ion-img>
 
