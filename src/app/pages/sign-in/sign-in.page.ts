@@ -20,7 +20,6 @@ export class SignInPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if (this.authService.getIsLoggedIn()) this.router.navigateByUrl('/menu');
   }
 
   /**
